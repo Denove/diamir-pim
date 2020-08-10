@@ -1,6 +1,11 @@
+
 var baseUrl = "https://apieuw.productmarketingcloud.com/api/v1.0.0/";
 var useFallbackApiKey = false;
 
+if(restApiKey == "") {
+    alert("No rest api fallback key is present");
+    return;
+}
 
 function determineAuthenticationMethod() {
     $.getJSON(myAjax("model/languages", null, "GET", false)).fail(function() {
