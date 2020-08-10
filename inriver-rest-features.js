@@ -3,14 +3,14 @@ var useFallbackApiKey = false;
 
 
 function determineAuthenticationMethod() {
-    $.getJSON(buildAjaxSettings("model/languages", null, "GET", false)).fail(function() {
+    $.getJSON(myAjax("model/languages", null, "GET", false)).fail(function() {
         useFallbackApiKey = true;
     }).always(function() {
         console.log(useFallbackApiKey ? "Using ApiKey for authentication" : "Using ApiKey less authentication");
     });
 }
 
-function buildAjaxSettings(restOperation, data = null, method = "GET", asyncOperation = true) {
+function $myAjax(restOperation, data = null, method = "GET", asyncOperation = true) {
     var ajaxSettings = {
         dataType: "json",
         contentType: 'application/json',
